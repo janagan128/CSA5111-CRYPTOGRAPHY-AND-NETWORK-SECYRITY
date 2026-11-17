@@ -1,0 +1,2 @@
+#include "../common.h"
+int main(void){long long q,a,x,y,A,B;printf("Public prime q and base a: ");scanf("%lld%lld",&q,&a);printf("Alice secret x and Bob secret y: ");scanf("%lld%lld",&x,&y);A=powmodn(a,x,q);B=powmodn(a,y,q);printf("Alice sends A=%lld; Bob sends B=%lld\n",A,B);printf("Alice key=%lld; Bob key=%lld\n",powmodn(B,x,q),powmodn(A,y,q));puts("Use authenticated key exchange in real systems; plain DH is vulnerable to man-in-the-middle attacks.");}

@@ -1,0 +1,2 @@
+#include "../common.h"
+int main(void){puts("ECB: a bit error in C1 corrupts only P1.");puts("CBC: an error in C1 corrupts all of P1 and flips the corresponding bit in P2; P3 onward is unaffected.");puts("If a source bit in P1 changes, CBC encryption changes C1 and therefore all later ciphertext blocks (with chaining).");puts("At the receiver, all plaintext blocks are affected from P1 onward.");return 0;}

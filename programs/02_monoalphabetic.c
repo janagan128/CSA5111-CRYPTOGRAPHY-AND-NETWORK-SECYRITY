@@ -1,0 +1,2 @@
+#include "../common.h"
+int main(void){char s[500],key[40];printf("Enter 26-letter cipher alphabet: ");scanf("%26s",key);upper_letters(key);int seen[26]={0};for(int i=0;i<26;i++){if(!isalpha(key[i])||seen[key[i]-'A']++){puts("Invalid key: use each A-Z once.");return 1;}}getchar();printf("Text: ");fgets(s,sizeof s,stdin);for(int i=0;s[i];i++)if(isalpha((unsigned char)s[i])){int u=isupper((unsigned char)s[i]);int v=key[toupper((unsigned char)s[i])-'A'];s[i]=u?v:tolower(v);}printf("Result: %s",s);}

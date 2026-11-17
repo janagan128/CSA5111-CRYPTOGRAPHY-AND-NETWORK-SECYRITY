@@ -1,0 +1,2 @@
+#include "../common.h"
+int main(void){char bits[100];int key=0x7D,iv=0xAA,prev=iv;printf("Enter plaintext bytes as hex (e.g. 010203): ");scanf("%99s",bits);printf("Ciphertext: ");for(int i=0;bits[2*i]&&bits[2*i+1];i++){unsigned x;sscanf(bits+2*i,"%2x",&x);int c=sdes8((int)x^prev,key,0);printf("%02X",c);prev=c;}puts("");puts("Educational S-DES CBC demo; key/IV are fixed to the worksheet test values.");}

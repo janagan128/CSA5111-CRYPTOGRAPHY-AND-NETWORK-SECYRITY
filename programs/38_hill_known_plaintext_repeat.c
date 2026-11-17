@@ -1,0 +1,2 @@
+#include "../common.h"
+int main(void){int a,b,c,d;printf("Enter two plaintext vectors p1(x,y), p2(x,y): ");int x1,y1,x2,y2;scanf("%d%d%d%d",&x1,&y1,&x2,&y2);printf("Enter their ciphertext vectors c1(x,y), c2(x,y): ");scanf("%d%d%d%d",&a,&b,&c,&d);int det=modn(x1*y2-y1*x2,26),iv=invn(det,26);if(iv<0){puts("No inverse: choose independent plaintext pairs.");return 1;}int m00=modn((a*y2-c*y1)*iv,26),m01=modn((-a*x2+c*x1)*iv,26),m10=modn((b*y2-d*y1)*iv,26),m11=modn((-b*x2+d*x1)*iv,26);printf("Key matrix: [%d %d; %d %d]\n",m00,m01,m10,m11);}

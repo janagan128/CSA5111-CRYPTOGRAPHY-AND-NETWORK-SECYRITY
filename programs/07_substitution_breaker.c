@@ -1,0 +1,2 @@
+#include "../common.h"
+int main(void){char c[2000],key[40];printf("Ciphertext: ");fgets(c,sizeof c,stdin);printf("Plain-to-cipher alphabet key (26 letters): ");scanf("%26s",key);upper_letters(key);for(int i=0;c[i];i++)if(isalpha((unsigned char)c[i])){int v=-1;for(int j=0;j<26;j++)if(key[j]==toupper(c[i])){v=j;break;}if(v>=0)c[i]=isupper((unsigned char)c[i])?'A'+v:'a'+v;}printf("Decrypted candidate: %s",c);puts("Use frequency clues to refine the key.");}

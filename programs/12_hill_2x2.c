@@ -1,0 +1,2 @@
+#include "../common.h"
+int main(void){char s[500],p[500];int a=9,b=4,c=5,d=7,det=modn(a*d-b*c,26),iv=invn(det,26);if(iv<0){puts("Key is not invertible.");return 1;}printf("Plaintext: ");fgets(s,sizeof s,stdin);int n=0;for(int i=0;s[i];i++)if(isalpha((unsigned char)s[i]))p[n++]=toupper(s[i]);if(n%2)p[n++]='X';printf("Ciphertext: ");for(int i=0;i<n;i+=2){int x=p[i]-'A',y=p[i+1]-'A';putchar('A'+modn(a*x+b*y,26));putchar('A'+modn(c*x+d*y,26));}puts("");printf("Inverse matrix mod 26: [%d %d; %d %d]\n",modn(d*iv,26),modn(-b*iv,26),modn(-c*iv,26),modn(a*iv,26));}

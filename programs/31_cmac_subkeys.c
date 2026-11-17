@@ -1,0 +1,2 @@
+#include "../common.h"
+static unsigned long long left64(unsigned long long x){return x<<1;}int main(void){unsigned long long l;printf("Enter 64-bit E_K(0) as hex: ");scanf("%llx",&l);unsigned long long k1=left64(l);if(l>>63)k1^=0x1B;unsigned long long k2=left64(k1);if(k1>>63)k2^=0x1B;printf("64-bit K1=%016llX K2=%016llX (Rb=1B)\n",k1,k2);puts("For 128-bit blocks, Rb is 0x87; shift left and XOR Rb when the original MSB is 1.");}

@@ -1,0 +1,3 @@
+#include "../common.h"
+#include <openssl/des.h>
+int main(void){DES_cblock key={{0x13,0x34,0x57,0x79,0x9B,0xBC,0xDF,0xF1}},in={{0x01,0x23,0x45,0x67,0x89,0xAB,0xCD,0xEF}},enc,dec;DES_key_schedule ks;DES_set_key_unchecked(&key,&ks);DES_ecb_encrypt(&in,&enc,&ks,DES_ENCRYPT);DES_ecb_encrypt(&enc,&dec,&ks,DES_DECRYPT);printf("Ciphertext: ");for(int i=0;i<8;i++)printf("%02X",enc[i]);printf("\nRecovered: ");for(int i=0;i<8;i++)printf("%02X",dec[i]);puts("");puts("DES is obsolete for new systems; use AES instead.");}

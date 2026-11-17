@@ -1,0 +1,2 @@
+#include "../common.h"
+int main(void){char s[1000],eng[]="ETAOINSHRDLCUMWFGYPBVKJXQZ",map[26];int f[26]={0},o[26];printf("Ciphertext: ");fgets(s,sizeof s,stdin);for(int i=0;s[i];i++)if(isalpha((unsigned char)s[i]))f[toupper(s[i])-'A']++;for(int i=0;i<26;i++)o[i]=i;for(int i=0;i<26;i++)for(int j=i+1;j<26;j++)if(f[o[j]]>f[o[i]]){int t=o[i];o[i]=o[j];o[j]=t;}for(int i=0;i<26;i++)map[o[i]]=eng[i];puts("Top frequency-mapped candidate:");for(int i=0;s[i];i++)putchar(isalpha((unsigned char)s[i])?map[toupper(s[i])-'A']:s[i]);puts("");}

@@ -1,0 +1,3 @@
+#include "../common.h"
+#include <openssl/des.h>
+int main(void){char kh[17];unsigned char in[8],out[8];DES_cblock key;DES_key_schedule ks;printf("Enter 16 hex digits for key: ");scanf("%16s",kh);for(int i=0;i<8;i++)sscanf(kh+2*i,"%2hhx",&key[i]);printf("Enter 16 hex digits ciphertext: ");char h[17];scanf("%16s",h);for(int i=0;i<8;i++)sscanf(h+2*i,"%2hhx",&in[i]);DES_set_key_unchecked(&key,&ks);DES_ecb_encrypt((const_DES_cblock*)in,(DES_cblock*)out,&ks,DES_DECRYPT);printf("Plaintext bytes: ");for(int i=0;i<8;i++)printf("%02X",out[i]);puts("");puts("DES decryption applies round subkeys K16..K1.");}
